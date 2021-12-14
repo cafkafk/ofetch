@@ -4,6 +4,7 @@ This is a very simple fetch script written in oil.
 It was mostly just to get a feeling for the language
 
 * Features
+#+html: <a href="https://asciinema.org/a/GvOdasVxcghPQXCtmFHDq3ZUF" target="_blank"><img src="https://asciinema.org/a/GvOdasVxcghPQXCtmFHDq3ZUF.svg" /></a>
 - Display:
 	- Kernel
 	- Arch
