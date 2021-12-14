@@ -1,0 +1,38 @@
+* ofetch - a fetch script written in oil
+This is a very simple fetch script written in oil. 
+
+It was mostly just to get a feeling for the language
+
+* Features
+- Display:
+	- Kernel
+	- Arch
+	- Distro
+	- Wm
+	- Shell
+	- Editor
+- ANSI colors
+- Works for LG3D workaround WM's
+
+* Manual
+** Downloading
+*** git HTTPS
+To get the latest version with git over HTTPS:
+#+begin_src sh
+git clone https://github.com/cafkafk/ofetch.git
+#+end_src
+*** git SSH
+To get the latest version with git over SSH:
+#+begin_src sh
+git clone git@github.com:cafkafk/ofetch.git
+
+#+end_src
+** Usage
+Just run this in the cloned dir.
+#+begin_src sh
+./ofetch
+#+end_src
+
+You can move the file to your path to have it on your system.
+
+
