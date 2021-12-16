@@ -1,0 +1,65 @@
+#!/usr/bin/env oil
+#    ofetch: A fetch script written for the oil shell
+#    Copyright (C) 2021  Christina (cafkafk)
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published
+#    by the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+# ANSI color codes
+var black = $'\u001b[30m'
+var red = $'\u001b[31m'
+var green = $'\u001b[32m'
+var yellow = $'\u001b[33m'
+var blue = $'\u001b[34m'
+var magenta = $'\u001b[35m'
+var cyan = $'\u001b[36m'
+var white = $'\u001b[37m'
+var reset = $'\u001b[0m'
+
+var distro = "$(... cat /etc/os-release 
+			| grep 'PRETTY_NAME=\".*\"' 
+			| grep -o '\".*\"' 
+			| tr -d "\"")";
+
+
+# Thanks bunnyfecth for this approach
+var wmname = "$(... xprop -id 
+			$(... xprop -root -notype 
+				| awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') 
+			-notype -f _NET_WM_NAME 8t 
+			| grep "WM_NAME" 
+			| cut -f2 -d \")";
+
+
+# Thanks neofetch for having a list of all of these
+if ! test wmname = "LG3D" {
+	setvar wmname = "$(... ps -aux 
+				| grep -m 1 -o 
+					-e "[s]owm" 
+					-e "[c]atwm" 
+					-e "[f]vwm" 
+					-e "[d]wm" 
+					-e "[2]bwm" 
+					-e "[m]onsterwm" 
+					-e "[t]inywm" 
+					-e "[x]11fs" 
+					-e "[x]monad" 
+				| head -n 1)";
+}
+
+echo -e "$cyan""Kernel""$reset"": $(uname -o) $(uname -r)"
+echo -e "$red""Arch""$reset"":   $(uname -m)"
+echo -e "$blue""Distro""$reset"": $distro"
+echo -e "$magenta""WM""$reset"":     $wmname";
+echo -e "$green""Shell""$reset"":  $(basename $SHELL)";
+echo -e "$yellow""Editor""$reset"": $EDITOR";

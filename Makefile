@@ -20,11 +20,11 @@ $(TARGET)-release: $(SRC)
 	tar -czvf $(TARGET)-$(VERSION).tar.gz $(TARGET)
 
 install: $(TARGET)
-	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	install -m755 $(TARGET) $(DESTDIR)$(PREFIX)/bin/$(TARGET)
+	mkdir -p $(DESTDIR)$(PREFIX)/
+	install -m755 $(TARGET) $(DESTDIR)$(PREFIX)/$(TARGET)
 
 uninstall:
-	$(RM) $(DESTDIR)$(PREFIX)/bin/$(TARGET)
+	$(RM) $(DESTDIR)$(PREFIX)/$(TARGET)
 
 $(TARGET)-debug: $(SRC)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(SRC) -Og -o $@
