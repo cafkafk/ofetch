@@ -1,5 +1,5 @@
-TARGET=xin
-SRC=xin.oil
+TARGET=ofetch
+SRC=ofetch.oil
 PREFIX ?= ~/.local/bin
 
 VERSION=0.1
